@@ -17,7 +17,7 @@ const seedRooms = async () => {
     console.log("All Rooms are added.");
 
     process.exit();
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.message);
     process.exit();
   }
