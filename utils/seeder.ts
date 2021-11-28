@@ -24,5 +24,5 @@ const seedRooms = async () => {
 };
 
 seedRooms();
-// To Avoid isolatedModulesError
+// To avoid isolatedModulesError
 export default undefined;
