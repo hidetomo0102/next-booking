@@ -1,5 +1,11 @@
+import { Query } from "mongoose";
+import { ParsedUrlQuery } from "node:querystring";
+
 class APIFeatures {
-  constructor(query, queryStr) {
+  constructor(
+    public query: Query<Array<any>, any, {}, any>,
+    public queryStr: ParsedUrlQuery
+  ) {
     this.query = query;
     this.queryStr = queryStr;
   }
@@ -27,7 +33,7 @@ class APIFeatures {
     return this;
   }
 
-  pagination(resPerPage) {
+  pagination(resPerPage: number) {
     const currentPage = Number(this.queryStr.page) || 1;
     const skip = resPerPage * (currentPage - 1);
 
