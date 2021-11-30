@@ -1,10 +1,13 @@
 import { Search } from "../components/Search";
 import { Layout } from "../components/layouts/Layout";
+import { NextPage } from "next";
 
-export default function SearchPage() {
+const SearchPage: NextPage = () => {
   return (
     <Layout title="Search Rooms">
       <Search />
     </Layout>
   );
-}
+};
+
+export default SearchPage;
