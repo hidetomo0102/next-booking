@@ -11,18 +11,18 @@ interface SendEmailOptions {
   message: string;
 }
 
-const auth: AuthenticationType = {
-  user: process.env.SMTP_USER,
-  pass: process.env.SMTP_PASSWORD,
-};
-
-const createTransportOption: SMTPConnection.Options = {
-  host: process.env.SMTP_HOST,
-  port: Number(String(process.env.SMTP_HOST)),
-  auth: auth,
-};
-
 export const sendEmail = async (options: SendEmailOptions): Promise<any> => {
+  const auth: AuthenticationType = {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
+  };
+
+  const createTransportOption: SMTPConnection.Options = {
+    host: process.env.SMTP_HOST,
+    port: Number(String(process.env.SMTP_HOST)),
+    auth: auth,
+  };
+
   const transporter: Transporter<SMTPTransport.SentMessageInfo> =
     createTransport(createTransportOption);
 
