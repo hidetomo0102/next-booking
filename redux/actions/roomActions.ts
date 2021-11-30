@@ -1,5 +1,8 @@
 import axios from "axios";
+import { Dispatch } from "hoist-non-react-statics/node_modules/@types/react";
+import { IncomingMessage } from "http";
 import absoluteUrl from "next-absolute-url";
+import { Action, ActionCreator } from "redux";
 
 import {
   ALL_ROOMS_SUCCESS,
@@ -33,10 +36,19 @@ import {
   DELETE_REVIEW_FAIL,
 } from "../constants/roomConstants";
 
+interface GetRoomsProps {
+  req: IncomingMessage;
+  currentPage: number;
+  location?: string | string[];
+  guests?: string | string[];
+  category?: string | string[];
+}
+
 // Get all rooms
 export const getRooms =
-  (req, currentPage = 1, location = "", guests, category) =>
-  async (dispatch) => {
+  (props: GetRoomsProps) =>
+  async (dispatch: Dispatch<Action>): Promise<void> => {
+    const { req, currentPage = 1, location, guests, category } = props;
     try {
       const { origin } = absoluteUrl(req);
       let link = `${origin}/api/rooms?page=${currentPage}&location=${location}`;
@@ -50,7 +62,7 @@ export const getRooms =
         type: ALL_ROOMS_SUCCESS,
         payload: data,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: ALL_ROOMS_FAIL,
         payload: error.response.data.message,
