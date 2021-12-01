@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext, NextPage } from "next";
-import { AnyAction, Store } from "redux";
 
 import { Home } from "../components/Home";
 import { Layout } from "../components/layouts/Layout";
@@ -14,18 +13,18 @@ const Index: NextPage = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ req, query }: GetServerSidePropsContext): Promise<any> => {
-      const props = {
-        req: req,
-        currentPage: Number(query.page),
-        location: query.location,
-        guests: query.guests,
-        category: query.category,
-      };
-      await store.dispatch(getRooms(props));
-    }
+export const getServerSideProps = wrapper.getServerSideProps((store) =>
+  // TODO: 返り値の定義やる
+  async ({ req, query }: GetServerSidePropsContext): Promise<any> => {
+    const props = {
+      req: req,
+      currentPage: Number(query.page),
+      location: query.location,
+      guests: query.guests,
+      category: query.category,
+    };
+    await store.dispatch(getRooms(props));
+  }
 );
 
 export default Index;

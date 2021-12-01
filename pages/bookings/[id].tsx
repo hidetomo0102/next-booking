@@ -5,8 +5,9 @@ import { Layout } from "../../components/layouts/Layout";
 import { BookingDetails } from "../../components/bookings/BookingDetails";
 import { wrapper } from "../../redux/store";
 import { getBookingDetails } from "../../redux/actions/bookingActions";
+import { GetServerSidePropsContext, NextPage } from "next";
 
-const BookingDetailsPage = () => {
+const BookingDetailsPage: NextPage = () => {
   return (
     <Layout title="Booking Details">
       <BookingDetails />
@@ -16,7 +17,7 @@ const BookingDetailsPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ req, params }) => {
+    async ({ req, params }: GetServerSidePropsContext): Promise<any> => {
       const session = await getSession({ req });
 
       if (!session) {

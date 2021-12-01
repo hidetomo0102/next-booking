@@ -185,51 +185,61 @@ export const checkReviewAvailability = (roomId) => async (dispatch) => {
   }
 };
 
+interface GetRoomDetailsProps {
+  req: IncomingMessage;
+  id?: string | string[];
+}
+
 // Get room details
-export const getRoomDetails = (req, id) => async (dispatch) => {
-  try {
-    const { origin } = absoluteUrl(req);
+export const getRoomDetails =
+  (props: GetRoomDetailsProps) => async (dispatch) => {
+    const { req, id } = props;
 
-    let url;
+    try {
+      const { origin } = absoluteUrl(req);
 
-    if (req) {
-      url = `${origin}/api/rooms/${id}`;
-    } else {
-      url = `api/rooms/${id}`;
+      let url;
+
+      if (req) {
+        url = `${origin}/api/rooms/${id}`;
+      } else {
+        url = `api/rooms/${id}`;
+      }
+
+      const { data } = await axios.get(url);
+
+      dispatch({
+        type: ROOM_DETAILS_SUCCESS,
+        payload: data.room,
+      });
+    } catch (error) {
+      dispatch({
+        type: ROOM_DETAILS_FAIL,
+        payload: error.response.data.message,
+      });
     }
-
-    const { data } = await axios.get(url);
-
-    dispatch({
-      type: ROOM_DETAILS_SUCCESS,
-      payload: data.room,
-    });
-  } catch (error) {
-    dispatch({
-      type: ROOM_DETAILS_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+  };
 
 // Get all rooms - ADMIN
-export const getAdminRooms = () => async (dispatch) => {
-  try {
-    dispatch({ type: ADMIN_ROOM_REQUEST });
+export const getAdminRooms =
+  () =>
+  async (dispatch: Dispatch<Action>): Promise<void> => {
+    try {
+      dispatch({ type: ADMIN_ROOM_REQUEST });
 
-    const { data } = await axios.get(`/api/admin/rooms`);
+      const { data } = await axios.get(`/api/admin/rooms`);
 
-    dispatch({
-      type: ADMIN_ROOM_SUCCESS,
-      payload: data.rooms,
-    });
-  } catch (error) {
-    dispatch({
-      type: ADMIN_ROOM_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+      dispatch({
+        type: ADMIN_ROOM_SUCCESS,
+        payload: data.rooms,
+      });
+    } catch (error) {
+      dispatch({
+        type: ADMIN_ROOM_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Get room reviews
 export const getRoomReviews = (id) => async (dispatch) => {
