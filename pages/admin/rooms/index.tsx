@@ -1,27 +1,27 @@
 import React from "react";
-import { getSession } from "next-auth/client";
 import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
   NextPage,
   Redirect,
 } from "next";
+import { getSession } from "next-auth/client";
 
+import { AllRooms } from "../../../components/admin/AllRooms";
 import { Layout } from "../../../components/layouts/Layout";
-import { AllBookings } from "../../../components/admin/AllBookings";
 import { CustomSession } from "../../../types/auth/Session";
 
-const AllBookingsPage: NextPage = () => {
+const AllRoomsPage: NextPage = () => {
   return (
-    <Layout title="All Bookings">
-      <AllBookings />
+    <Layout title="All Rooms">
+      <AllRooms />
     </Layout>
   );
 };
 
-export async function getServerSideProps(
+export const getServerSideProps = async (
   context: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<Redirect | {}>> {
+): Promise<GetServerSidePropsResult<Redirect | {}>> => {
   const session: CustomSession = await getSession({ req: context.req });
 
   if (!session || session.user!.role !== "admin") {
@@ -33,6 +33,6 @@ export async function getServerSideProps(
     };
   }
   return { props: {} };
-}
+};
 
-export default AllBookingsPage;
+export default AllRoomsPage;

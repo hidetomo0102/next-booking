@@ -4,17 +4,17 @@ import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
   NextPage,
-  Redirect,
 } from "next";
+import { Redirect } from "next/dist/lib/load-custom-routes";
 
+import { AllUsers } from "../../../components/admin/AllUsers";
 import { Layout } from "../../../components/layouts/Layout";
-import { AllBookings } from "../../../components/admin/AllBookings";
 import { CustomSession } from "../../../types/auth/Session";
 
-const AllBookingsPage: NextPage = () => {
+const AllUsersPage: NextPage = () => {
   return (
-    <Layout title="All Bookings">
-      <AllBookings />
+    <Layout title="All Users">
+      <AllUsers />
     </Layout>
   );
 };
@@ -32,7 +32,10 @@ export async function getServerSideProps(
       },
     };
   }
-  return { props: {} };
+
+  return {
+    props: {},
+  };
 }
 
-export default AllBookingsPage;
+export default AllUsersPage;
