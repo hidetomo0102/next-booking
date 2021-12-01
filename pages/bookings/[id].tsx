@@ -15,24 +15,36 @@ const BookingDetailsPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ req, params }: GetServerSidePropsContext): Promise<any> => {
-      const session = await getSession({ req });
+export const getServerSideProps = wrapper.getServerSideProps((store) =>
+  // TODO:返り値の定義ちゃんとやる
+  async ({ req, params }: GetServerSidePropsContext): Promise<any> => {
+    const session = await getSession({ req });
 
-      if (!session) {
-        return {
-          redirect: {
-            destination: "/login",
-            permanent: false,
-          },
-        };
-      }
-
-      await store.dispatch(
-        getBookingDetails(req.headers.cookie, req, params.id)
-      );
+    if (!session) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
     }
+
+    let props;
+    if (params) {
+      props = {
+        authCookie: req.headers.cookie,
+        req: req,
+        id: params.id,
+      };
+    } else {
+      props = {
+        authCookie: req.headers.cookie,
+        req: req,
+      };
+    }
+
+    await store.dispatch(getBookingDetails(props));
+  }
 );
 
 export default BookingDetailsPage;

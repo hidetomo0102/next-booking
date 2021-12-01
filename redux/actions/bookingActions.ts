@@ -1,5 +1,8 @@
 import axios from "axios";
+import { Dispatch } from "hoist-non-react-statics/node_modules/@types/react";
+import { IncomingMessage } from "http";
 import absoluteUrl from "next-absolute-url";
+import { Action } from "redux";
 
 import {
   BOOKED_DATES_FAIL,
@@ -104,30 +107,38 @@ export const getAdminBookings = () => async (dispatch) => {
   }
 };
 
+interface GetBookingDetailsProps {
+  authCookie: string | undefined;
+  req: IncomingMessage;
+  id?: string | string[];
+}
+
 // Display booking details
-export const getBookingDetails = (authCookie, req, id) => async (dispatch) => {
-  try {
-    const { origin } = absoluteUrl(req);
+export const getBookingDetails =
+  (props: GetBookingDetailsProps) => async (dispatch: Dispatch<Action>) => {
+    const { authCookie, req, id } = props;
+    try {
+      const { origin } = absoluteUrl(req);
 
-    const config = {
-      headers: {
-        cookie: authCookie,
-      },
-    };
+      const config = {
+        headers: {
+          cookie: authCookie,
+        },
+      };
 
-    const { data } = await axios.get(`${origin}/api/bookings/${id}`, config);
+      const { data } = await axios.get(`${origin}/api/bookings/${id}`, config);
 
-    dispatch({
-      type: BOOKING_DETAILS_SUCCESS,
-      payload: data.booking,
-    });
-  } catch (error) {
-    dispatch({
-      type: BOOKING_DETAILS_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+      dispatch({
+        type: BOOKING_DETAILS_SUCCESS,
+        payload: data.booking,
+      });
+    } catch (error) {
+      dispatch({
+        type: BOOKING_DETAILS_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Delete booking
 export const deleteBooking = (id) => async (dispatch) => {
