@@ -5,8 +5,10 @@ import { Layout } from "../../../components/layouts/Layout";
 import { BookingDetails } from "../../../components/bookings/BookingDetails";
 import { wrapper } from "../../../redux/store";
 import { getBookingDetails } from "../../../redux/actions/bookingActions";
+import { GetServerSidePropsContext, NextPage } from "next";
+import { CustomSession } from "../../../types/auth/Session";
 
-const BookingDetailsPage = () => {
+const BookingDetailsPage: NextPage = () => {
   return (
     <Layout title="Booking Details">
       <BookingDetails />
@@ -16,10 +18,10 @@ const BookingDetailsPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ req, params }) => {
-      const session = await getSession({ req });
+    async ({ req, params }: GetServerSidePropsContext): Promise<any> => {
+      const session: CustomSession = await getSession({ req });
 
-      if (!session || session.user.role !== "admin") {
+      if (!session || session.user!.role !== "admin") {
         return {
           redirect: {
             destination: "/login",
@@ -28,9 +30,13 @@ export const getServerSideProps = wrapper.getServerSideProps(
         };
       }
 
-      await store.dispatch(
-        getBookingDetails(req.headers.cookie, req, params.id)
-      );
+      const props = {
+        authCookie: req.headers.cookie,
+        req: req,
+        id: params!.id,
+      };
+
+      await store.dispatch(getBookingDetails(props));
     }
 );
 
