@@ -20,7 +20,12 @@ type Image = {
   url: string;
 };
 
-type Cateogry = {};
+type Review = {
+  user: User;
+  name: string;
+  rating: number;
+  comment: string;
+};
 
 export type Room = {
   name: string;
@@ -38,6 +43,20 @@ export type Room = {
   numOfReviews?: number;
   images: Image[];
   category: "King" | "Twins" | "Single";
+  reviews: Review[];
+  user?: User;
+  createdAt: Date;
 };
 
-export type User = {};
+type Avatar = Image;
+
+export type User = {
+  name: string;
+  email: string;
+  password: string;
+  avatar: Avatar;
+  role: string;
+  createdAt: Date;
+  resetPasswordToken?: string;
+  resetPasswordExpire?: Date;
+};
