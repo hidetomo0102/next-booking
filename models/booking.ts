@@ -1,5 +1,5 @@
 import { models, model, Schema } from "mongoose";
-import timeZone from "mongoose-timezone";
+const timeZone = require("mongoose-timezone");
 
 const bookingSchma = new Schema({
   room: {

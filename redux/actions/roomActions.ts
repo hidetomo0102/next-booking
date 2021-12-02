@@ -2,7 +2,8 @@ import axios from "axios";
 import { Dispatch } from "hoist-non-react-statics/node_modules/@types/react";
 import { IncomingMessage } from "http";
 import absoluteUrl from "next-absolute-url";
-import { Action, ActionCreator } from "redux";
+import { Action } from "redux";
+import { Room } from "../../types/Model";
 
 import {
   ALL_ROOMS_SUCCESS,
@@ -71,7 +72,7 @@ export const getRooms =
   };
 
 // new Review
-export const newRoom = (roomData) => async (dispatch) => {
+export const newRoom = (roomData: Room) => async (dispatch) => {
   try {
     dispatch({ type: NEW_ROOM_REQUEST });
 

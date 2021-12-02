@@ -113,4 +113,4 @@ const roomSchema = new Schema({
   },
 });
 
-module.exports = models.Room || model("Room", roomSchema);
+export default models.Room || model("Room", roomSchema);

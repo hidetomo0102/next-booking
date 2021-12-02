@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.21.0",
+    "@types/bcryptjs": "^2.4.2",
     "@types/mongoose": "^5.11.97",
+    "@types/validator": "^13.7.0",
     "axios": "^0.23.0",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.1.2",
