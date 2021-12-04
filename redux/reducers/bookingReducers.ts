@@ -1,4 +1,16 @@
 import {
+  BookedDatesAction,
+  BookedDatesState,
+  BookingDeletedAction,
+  BookingDeletedState,
+  BookingDetailsAction,
+  BookingDetailsState,
+  BookingsAction,
+  BookingsState,
+  CheckBookingAction,
+  CheckBookingState,
+} from "../../types/redux/reducer/booking";
+import {
   CHECK_BOOKING_REQUEST,
   CHECK_BOOKING_SUCCESS,
   CHECK_BOOKING_FAIL,
@@ -15,14 +27,15 @@ import {
   DELETE_BOOKING_SUCCESS,
   DELETE_BOOKING_FAIL,
   DELETE_BOOKING_RESET,
+  DELETE_BOOKING_REQUEST,
+  ADMIN_BOOKINGS_REQUEST,
 } from "../constants/bookingConstants";
-import {
-  ADMIN_ROOM_REQUEST,
-  DELETE_ROOM_REQUEST,
-} from "../constants/roomConstants";
 
 // Check Booking Reducer
-export const checkBookingReducer = (state = { available: null }, action) => {
+export const checkBookingReducer = (
+  state: CheckBookingState,
+  action: CheckBookingAction
+): CheckBookingState => {
   switch (action.type) {
     case CHECK_BOOKING_REQUEST:
       return {
@@ -54,7 +67,10 @@ export const checkBookingReducer = (state = { available: null }, action) => {
 };
 
 // Get all booked Reducer
-export const bookedDatesReducer = (state = { dates: [] }, action) => {
+export const bookedDatesReducer = (
+  state: BookedDatesState,
+  action: BookedDatesAction
+): BookedDatesState => {
   switch (action.type) {
     case BOOKED_DATES_SUCCESS:
       return {
@@ -77,9 +93,12 @@ export const bookedDatesReducer = (state = { dates: [] }, action) => {
 };
 
 // Get all bookings of user
-export const bookingsReducer = (state = { bookings: [] }, action) => {
+export const bookingsReducer = (
+  state: BookingsState,
+  action: BookingsAction
+): BookingsState => {
   switch (action.type) {
-    case ADMIN_ROOM_REQUEST:
+    case ADMIN_BOOKINGS_REQUEST:
       return {
         loading: true,
       };
@@ -106,7 +125,10 @@ export const bookingsReducer = (state = { bookings: [] }, action) => {
 };
 
 // Get booking details
-export const bookingDetailsReducer = (state = { booking: {} }, action) => {
+export const bookingDetailsReducer = (
+  state: BookingDetailsState,
+  action: BookingDetailsAction
+): BookingDetailsState => {
   switch (action.type) {
     case BOOKING_DETAILS_SUCCESS:
       return {
@@ -129,9 +151,12 @@ export const bookingDetailsReducer = (state = { booking: {} }, action) => {
 };
 
 // Delete Booking Reducer
-export const bookingReducer = (state = {}, action) => {
+export const bookingReducer = (
+  state: BookingDeletedState,
+  action: BookingDeletedAction
+): BookingDeletedState => {
   switch (action.type) {
-    case DELETE_ROOM_REQUEST:
+    case DELETE_BOOKING_REQUEST:
       return {
         loading: true,
       };
