@@ -9,7 +9,7 @@ import {
 
 import { Layout } from "../../../components/layouts/Layout";
 import { AllBookings } from "../../../components/admin/AllBookings";
-import { CustomSession } from "../../../types/auth/Session";
+import { CustomSession } from "../../../types/auth/session";
 
 const AllBookingsPage: NextPage = () => {
   return (

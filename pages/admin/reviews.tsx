@@ -9,7 +9,7 @@ import {
 
 import { RoomReviews } from "../../components/admin/RoomReviews";
 import { Layout } from "../../components/layouts/Layout";
-import { CustomSession } from "../../types/auth/Session";
+import { CustomSession } from "../../types/auth/session";
 
 const RoomReviewsPage: NextPage = () => {
   return (

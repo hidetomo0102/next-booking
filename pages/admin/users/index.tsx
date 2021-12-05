@@ -9,7 +9,7 @@ import { Redirect } from "next/dist/lib/load-custom-routes";
 
 import { AllUsers } from "../../../components/admin/AllUsers";
 import { Layout } from "../../../components/layouts/Layout";
-import { CustomSession } from "../../../types/auth/Session";
+import { CustomSession } from "../../../types/auth/session";
 
 const AllUsersPage: NextPage = () => {
   return (

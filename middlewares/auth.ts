@@ -1,5 +1,5 @@
 import { getSession } from "next-auth/client";
-import { Request, Response } from "../types/auth/Session";
+import { Request, Response } from "../types/auth/session";
 
 import ErrorHandler from "../utils/errorHandler";
 import catchAsyncError from "./catchAsyncError";

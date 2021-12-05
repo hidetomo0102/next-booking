@@ -10,7 +10,7 @@ import { Layout } from "../../../components/layouts/Layout";
 import { BookingDetails } from "../../../components/bookings/BookingDetails";
 import { wrapper } from "../../../redux/store";
 import { getBookingDetails } from "../../../redux/actions/bookingActions";
-import { CustomSession } from "../../../types/auth/Session";
+import { CustomSession } from "../../../types/auth/session";
 import { Redirect } from "next/dist/lib/load-custom-routes";
 
 const BookingDetailsPage: NextPage = () => {

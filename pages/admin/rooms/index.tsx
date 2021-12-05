@@ -9,7 +9,7 @@ import { getSession } from "next-auth/client";
 
 import { AllRooms } from "../../../components/admin/AllRooms";
 import { Layout } from "../../../components/layouts/Layout";
-import { CustomSession } from "../../../types/auth/Session";
+import { CustomSession } from "../../../types/auth/session";
 
 const AllRoomsPage: NextPage = () => {
   return (

@@ -4,7 +4,7 @@ import { getSession } from "next-auth/client";
 
 import { Layout } from "../../../components/layouts/Layout";
 import { NewRoom } from "../../../components/admin/NewRoom";
-import { CustomSession } from "../../../types/auth/Session";
+import { CustomSession } from "../../../types/auth/session";
 
 const NewRoomsPage: NextPage = () => {
   return (

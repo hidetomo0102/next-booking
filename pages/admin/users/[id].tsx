@@ -9,7 +9,7 @@ import {
 
 import { UpdateUsers } from "../../../components/admin/UpdateUser";
 import { Layout } from "../../../components/layouts/Layout";
-import { CustomSession } from "../../../types/auth/Session";
+import { CustomSession } from "../../../types/auth/session";
 
 const UpdateUser: NextPage = () => {
   return (
