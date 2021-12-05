@@ -1,4 +1,22 @@
 import {
+  AllRoomsAction,
+  AllRoomsState,
+  CheckReviewState,
+  NewReviewState,
+  NewReviewAction,
+  NewRoomState,
+  ReviewState,
+  RoomDetailsAction,
+  RoomDetailsState,
+  RoomReviewsState,
+  RoomState,
+  NewRoomAction,
+  RoomAction,
+  CheckReviewAction,
+  RoomReviewsAction,
+  ReviewAction,
+} from "../../types/redux/reducer/room";
+import {
   ALL_ROOMS_SUCCESS,
   ALL_ROOMS_FAIL,
   ROOM_DETAILS_SUCCESS,
@@ -20,6 +38,7 @@ import {
   CLEAR_ERRORS,
   UPDATE_ROOM_REQUEST,
   UPDATE_ROOM_SUCCESS,
+  UPDATE_ROOM_RESET,
   UPDATE_ROOM_FAIL,
   DELETE_ROOM_REQUEST,
   DELETE_ROOM_SUCCESS,
@@ -33,14 +52,16 @@ import {
   DELETE_REVIEW_RESET,
   DELETE_REVIEW_FAIL,
 } from "../constants/roomConstants";
-import { UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
 // All rooms Reducer
-export const allRoomsReducer = (state = { rooms: [] }, action) => {
+export const allRoomsReducer = (
+  state: AllRoomsState = { rooms: [] },
+  action: AllRoomsAction
+): AllRoomsState => {
   switch (action.type) {
     case ADMIN_ROOM_REQUEST:
       return {
-        loading: success,
+        loading: true,
       };
     case ALL_ROOMS_SUCCESS:
       return {
@@ -52,7 +73,7 @@ export const allRoomsReducer = (state = { rooms: [] }, action) => {
     case ADMIN_ROOM_SUCCESS:
       return {
         loading: false,
-        rooms: action.payload,
+        rooms: action.payload.rooms,
       };
     case ALL_ROOMS_FAIL:
     case ADMIN_ROOM_FAIL:
@@ -70,7 +91,10 @@ export const allRoomsReducer = (state = { rooms: [] }, action) => {
 };
 
 // Room details Reducer
-export const roomDetailsReducer = (state = { rooms: {} }, action) => {
+export const roomDetailsReducer = (
+  state: RoomDetailsState = {},
+  action: RoomDetailsAction
+): RoomDetailsState => {
   switch (action.type) {
     case ROOM_DETAILS_SUCCESS:
       return {
@@ -91,7 +115,10 @@ export const roomDetailsReducer = (state = { rooms: {} }, action) => {
 };
 
 // Room review Reducer
-export const newReviewReducer = (state = {}, action) => {
+export const newReviewReducer = (
+  state: NewReviewState = {},
+  action: NewReviewAction
+): NewReviewState => {
   switch (action.type) {
     case NEW_REVIEW_REQUEST:
       return {
@@ -122,7 +149,10 @@ export const newReviewReducer = (state = {}, action) => {
 };
 
 // New room Reducer
-export const newRoomReducer = (state = { room: {} }, action) => {
+export const newRoomReducer = (
+  state: NewRoomState = {},
+  action: NewRoomAction
+): NewRoomState => {
   switch (action.type) {
     case NEW_ROOM_REQUEST:
       return {
@@ -154,7 +184,10 @@ export const newRoomReducer = (state = { room: {} }, action) => {
 };
 
 // Room Reducer
-export const roomReducer = (state = {}, action) => {
+export const roomReducer = (
+  state: RoomState = {},
+  action: RoomAction
+): RoomState => {
   switch (action.type) {
     case UPDATE_ROOM_REQUEST:
     case DELETE_ROOM_REQUEST:
@@ -171,7 +204,7 @@ export const roomReducer = (state = {}, action) => {
         loading: false,
         isDeleted: action.payload,
       };
-    case UPDATE_PROFILE_RESET:
+    case UPDATE_ROOM_RESET:
       return {
         loading: false,
         isUpdated: false,
@@ -199,9 +232,9 @@ export const roomReducer = (state = {}, action) => {
 
 // check review availability
 export const checkReviewReducer = (
-  state = { reviewAvailable: null },
-  action
-) => {
+  state: CheckReviewState = { reviewAvailable: null },
+  action: CheckReviewAction
+): CheckReviewState => {
   switch (action.type) {
     case REVIEW_AVAILABILITY_REQUEST:
       return {
@@ -232,7 +265,10 @@ export const checkReviewReducer = (
 };
 
 // Room Review Reducer
-export const roomReviewsReducer = (state = { reviews: [] }, action) => {
+export const roomReviewsReducer = (
+  state: RoomReviewsState = { reviews: [] },
+  action: RoomReviewsAction
+): RoomReviewsState => {
   switch (action.type) {
     case GET_REVIEWS_REQUEST:
       return {
@@ -241,7 +277,7 @@ export const roomReviewsReducer = (state = { reviews: [] }, action) => {
     case GET_REVIEWS_SUCCESS:
       return {
         loading: false,
-        reviews: action.payload.success,
+        reviews: action.payload.reviews,
       };
     case GET_REVIEWS_FAIL:
       return {
@@ -259,7 +295,10 @@ export const roomReviewsReducer = (state = { reviews: [] }, action) => {
 };
 
 // review Reducer
-export const reviewReducer = (state = {}, action) => {
+export const reviewReducer = (
+  state: ReviewState = {},
+  action: ReviewAction
+): ReviewState => {
   switch (action.type) {
     case DELETE_REVIEW_REQUEST:
       return {

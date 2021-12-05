@@ -20,7 +20,7 @@ type Image = {
   url: string;
 };
 
-type Review = {
+export type Review = {
   user: User;
   name: string;
   rating: number;
