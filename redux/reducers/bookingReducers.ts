@@ -33,7 +33,7 @@ import {
 
 // Check Booking Reducer
 export const checkBookingReducer = (
-  state: CheckBookingState,
+  state: CheckBookingState = { available: null },
   action: CheckBookingAction
 ): CheckBookingState => {
   switch (action.type) {
@@ -68,7 +68,7 @@ export const checkBookingReducer = (
 
 // Get all booked Reducer
 export const bookedDatesReducer = (
-  state: BookedDatesState,
+  state: BookedDatesState = { dates: [] },
   action: BookedDatesAction
 ): BookedDatesState => {
   switch (action.type) {
@@ -94,7 +94,7 @@ export const bookedDatesReducer = (
 
 // Get all bookings of user
 export const bookingsReducer = (
-  state: BookingsState,
+  state: BookingsState = { bookings: [] },
   action: BookingsAction
 ): BookingsState => {
   switch (action.type) {
@@ -126,7 +126,7 @@ export const bookingsReducer = (
 
 // Get booking details
 export const bookingDetailsReducer = (
-  state: BookingDetailsState,
+  state: BookingDetailsState = {},
   action: BookingDetailsAction
 ): BookingDetailsState => {
   switch (action.type) {
@@ -152,7 +152,7 @@ export const bookingDetailsReducer = (
 
 // Delete Booking Reducer
 export const bookingReducer = (
-  state: BookingDeletedState,
+  state: BookingDeletedState = {},
   action: BookingDeletedAction
 ): BookingDeletedState => {
   switch (action.type) {
