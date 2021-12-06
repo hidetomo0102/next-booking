@@ -1,5 +1,5 @@
 import { Moment } from "moment";
-import { Booking } from "../../../types/Model";
+import { Booking } from "../../../types/model";
 import { InitialState } from "./index";
 
 export type CheckBookingState = {

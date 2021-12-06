@@ -1,5 +1,5 @@
 import { InitialState } from ".";
-import { Review, Room } from "../../../types/Model";
+import { Review, Room } from "../../../types/model";
 
 export interface AllRoomsState extends InitialState {
   rooms?: Room[];

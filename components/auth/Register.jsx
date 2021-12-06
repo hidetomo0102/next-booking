@@ -35,8 +35,8 @@ export const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const userData = { name, email, password, avatar };
-    dispatch(registerUser(userData));
+    const registerData = { name, email, password, avatar };
+    dispatch(registerUser(registerData));
   };
 
   const onChange = (e) => {

@@ -1,4 +1,4 @@
-import { User } from "../../Model";
+import { User } from "../../model";
 import { InitialState } from "./index";
 
 export interface AuthState extends InitialState {
@@ -16,8 +16,8 @@ export interface UserState extends InitialState {
 }
 
 export interface ForgotPasswordState extends InitialState {
-  message?: string;
-  success?: boolean;
+  message?: string | null;
+  success?: boolean | null;
 }
 
 export interface AllUsersState extends InitialState {
@@ -34,7 +34,7 @@ export interface AuthAction {
     | "REGISTER_USER_SUCCESS"
     | "REGISTER_USER_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean;
+  payload?: boolean;
 }
 
 export interface LoadedUserAction {
@@ -43,7 +43,7 @@ export interface LoadedUserAction {
     | "LOAD_USER_SUCCESS"
     | "LOAD_USER_FAIL"
     | "CLEAR_ERRORS";
-  payload: User;
+  payload?: User | null;
 }
 
 export interface UserAction {
@@ -61,7 +61,7 @@ export interface UserAction {
     | "DELETE_USER_RESET"
     | "DELETE_USER_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean;
+  payload?: boolean;
 }
 
 export interface ForgotPasswordAction {
@@ -82,7 +82,7 @@ export interface AllUsersAction {
     | "ADMIN_USERS_SUCCESS"
     | "ADMIN_USERS_FAIL"
     | "CLEAR_ERRORS";
-  payload: User[];
+  payload?: User[];
 }
 
 export interface UserDetailsAction {
@@ -91,5 +91,5 @@ export interface UserDetailsAction {
     | "USER_DETAILS_SUCCESS"
     | "USER_DETAILS_FAIL"
     | "CLEAR_ERRORS";
-  payload: User;
+  payload?: User;
 }

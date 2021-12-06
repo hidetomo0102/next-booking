@@ -1,5 +1,12 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { Dispatch } from "redux";
 
+import { RegisterData } from "../../types/redux/actions/user";
+import {
+  AuthAction,
+  LoadedUserAction,
+  LoadedUserState,
+} from "../../types/redux/reducer/user";
 import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
@@ -30,40 +37,45 @@ import {
 } from "../constants/userConstants";
 
 // Register user
-export const registerUser = (userData) => async (dispatch) => {
-  try {
-    dispatch({ type: REGISTER_USER_REQUEST });
+export const registerUser =
+  (registerData: RegisterData) => async (dispatch: Dispatch<AuthAction>) => {
+    try {
+      dispatch({ type: REGISTER_USER_REQUEST });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.post("/api/auth/register", userData, config);
+      const config: AxiosRequestConfig = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/auth/register",
+        registerData,
+        config
+      );
 
-    dispatch({
-      type: REGISTER_USER_SUCCESS,
-    });
-  } catch (error) {
-    dispatch({
-      type: REGISTER_USER_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+      dispatch({
+        type: REGISTER_USER_SUCCESS,
+      });
+    } catch (error: any) {
+      dispatch({
+        type: REGISTER_USER_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Load user
-export const loadUser = () => async (dispatch) => {
+export const loadUser = () => async (dispatch: Dispatch<LoadedUserAction>) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get("/api/me");
+    const { data }: AxiosResponse<LoadedUserState> = await axios.get("/api/me");
 
     dispatch({
       type: LOAD_USER_SUCCESS,
       payload: data.user,
     });
-  } catch (error) {
+  } catch (error: any) {
     dispatch({
       type: LOAD_USER_FAIL,
       payload: error.response.data.message,

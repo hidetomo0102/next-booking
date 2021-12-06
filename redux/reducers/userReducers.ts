@@ -162,7 +162,7 @@ export const userReducer = (
 
 // Forgot Password Reducer
 export const forgotPasswordReducer = (
-  state: ForgotPasswordState = {},
+  state: ForgotPasswordState = { message: null, success: null },
   action: ForgotPasswordAction
 ): ForgotPasswordState => {
   switch (action.type) {
