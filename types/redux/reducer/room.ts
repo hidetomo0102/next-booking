@@ -9,7 +9,7 @@ export interface AllRoomsState extends InitialState {
 }
 
 export interface RoomDetailsState extends InitialState {
-  room?: Room;
+  room?: Room | null;
 }
 
 export interface NewReviewState extends InitialState {
@@ -18,7 +18,7 @@ export interface NewReviewState extends InitialState {
 
 export interface NewRoomState extends InitialState {
   success?: boolean;
-  room?: Room;
+  room?: Room | null;
 }
 
 export interface RoomState extends InitialState {

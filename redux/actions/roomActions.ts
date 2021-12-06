@@ -3,7 +3,7 @@ import { Dispatch } from "hoist-non-react-statics/node_modules/@types/react";
 import { IncomingMessage } from "http";
 import absoluteUrl from "next-absolute-url";
 import { Action } from "redux";
-import { Room } from "../../types/model";
+import { Room } from "../../types/Model";
 
 import {
   ALL_ROOMS_SUCCESS,

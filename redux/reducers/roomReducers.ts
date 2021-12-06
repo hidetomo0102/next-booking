@@ -92,7 +92,7 @@ export const allRoomsReducer = (
 
 // Room details Reducer
 export const roomDetailsReducer = (
-  state: RoomDetailsState = {},
+  state: RoomDetailsState = { room: null },
   action: RoomDetailsAction
 ): RoomDetailsState => {
   switch (action.type) {
@@ -150,7 +150,7 @@ export const newReviewReducer = (
 
 // New room Reducer
 export const newRoomReducer = (
-  state: NewRoomState = {},
+  state: NewRoomState = { room: null },
   action: NewRoomAction
 ): NewRoomState => {
   switch (action.type) {

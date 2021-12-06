@@ -126,7 +126,7 @@ export const bookingsReducer = (
 
 // Get booking details
 export const bookingDetailsReducer = (
-  state: BookingDetailsState = {},
+  state: BookingDetailsState = { booking: null },
   action: BookingDetailsAction
 ): BookingDetailsState => {
   switch (action.type) {

@@ -15,7 +15,7 @@ export type BookingsState = {
 } & InitialState;
 
 export type BookingDetailsState = {
-  booking?: Booking;
+  booking?: Booking | null;
 } & InitialState;
 
 export type BookingDeletedState = {
