@@ -73,7 +73,7 @@ export interface ForgotPasswordAction {
     | "RESET_PASSWORD_SUCCESS"
     | "RESET_PASSWORD_FAIL"
     | "CLEAR_ERRORS";
-  payload: ForgotPasswordState;
+  payload?: ForgotPasswordState;
 }
 
 export interface AllUsersAction {
@@ -91,5 +91,5 @@ export interface UserDetailsAction {
     | "USER_DETAILS_SUCCESS"
     | "USER_DETAILS_FAIL"
     | "CLEAR_ERRORS";
-  payload?: User;
+  payload?: User | {};
 }
