@@ -172,6 +172,6 @@ export const deleteAdminBookings = catchAsyncError(async (req, res, next) => {
   await booking.romove();
 
   res.status(200).json({
-    success: true,
+    isDeleted: true,
   });
 });

@@ -6,6 +6,7 @@ import User from "../models/user";
 import ErrorHandler from "../utils/errorHandler";
 import catchAsyncError from "../middlewares/catchAsyncError";
 import { sendEmail } from "../utils/sendEmail";
+import { Response } from "../types/auth/session";
 
 // SetUp cloudinary config
 cloudinary.config({

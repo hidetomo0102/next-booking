@@ -3,11 +3,11 @@ import { Booking } from "../../../types/model";
 import { InitialState } from "./index";
 
 export type CheckBookingState = {
-  available?: boolean | null;
+  isAvailable?: boolean | null;
 } & InitialState;
 
 export type BookedDatesState = {
-  dates?: Moment[];
+  bookedDates?: Moment[];
 } & InitialState;
 
 export type BookingsState = {
@@ -29,12 +29,12 @@ export interface CheckBookingAction {
     | "CHECK_BOOKING_RESET"
     | "CHECK_BOOKING_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean | null;
+  payload?: boolean | null;
 }
 
 export interface BookedDatesAction {
   type: "BOOKED_DATES_SUCCESS" | "BOOKED_DATES_FAIL" | "CLEAR_ERRORS";
-  payload: Moment[];
+  payload?: Moment[];
 }
 
 export interface BookingsAction {
@@ -45,12 +45,12 @@ export interface BookingsAction {
     | "ADMIN_BOOKINGS_SUCCESS"
     | "ADMIN_BOOKINGS_FAIL"
     | "CLEAR_ERRORS";
-  payload: Booking[];
+  payload?: Booking[];
 }
 
 export interface BookingDetailsAction {
   type: "BOOKING_DETAILS_SUCCESS" | "BOOKING_DETAILS_FAIL" | "CLEAR_ERRORS";
-  payload: Booking;
+  payload?: Booking | null;
 }
 
 export interface BookingDeletedAction {
@@ -60,5 +60,5 @@ export interface BookingDeletedAction {
     | "DELETE_BOOKING_RESET"
     | "DELETE_BOOKING_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean;
+  payload?: boolean;
 }

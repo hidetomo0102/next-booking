@@ -33,7 +33,7 @@ import {
 
 // Check Booking Reducer
 export const checkBookingReducer = (
-  state: CheckBookingState = { available: null },
+  state: CheckBookingState = { isAvailable: null },
   action: CheckBookingAction
 ): CheckBookingState => {
   switch (action.type) {
@@ -44,12 +44,12 @@ export const checkBookingReducer = (
     case CHECK_BOOKING_SUCCESS:
       return {
         loading: false,
-        available: action.payload,
+        isAvailable: action.payload,
       };
     case CHECK_BOOKING_RESET:
       return {
         loading: false,
-        available: null,
+        isAvailable: null,
       };
     case CHECK_BOOKING_FAIL:
       return {
@@ -68,14 +68,14 @@ export const checkBookingReducer = (
 
 // Get all booked Reducer
 export const bookedDatesReducer = (
-  state: BookedDatesState = { dates: [] },
+  state: BookedDatesState = { bookedDates: [] },
   action: BookedDatesAction
 ): BookedDatesState => {
   switch (action.type) {
     case BOOKED_DATES_SUCCESS:
       return {
         loading: false,
-        dates: action.payload,
+        bookedDates: action.payload,
       };
     case BOOKED_DATES_FAIL:
       return {
