@@ -82,7 +82,7 @@ export const getBookedDates =
 // Display all bookings of user
 export const myBookings =
   (authCookie: string, req: Request) =>
-  async (dispatch: Dispatch<BookingsAction>) => {
+  async (dispatch: Dispatch<BookingsAction>): Promise<void> => {
     try {
       const { origin } = absoluteUrl(req);
 
@@ -134,7 +134,7 @@ export const getAdminBookings =
 // Display booking details
 export const getBookingDetails =
   (props: GetBookingDetailsProps) =>
-  async (dispatch: Dispatch<BookingDetailsAction>) => {
+  async (dispatch: Dispatch<BookingDetailsAction>): Promise<void> => {
     const { authCookie, req, id } = props;
     try {
       const { origin } = absoluteUrl(req);
@@ -164,7 +164,8 @@ export const getBookingDetails =
 
 // Delete booking
 export const deleteBooking =
-  (id: string) => async (dispatch: Dispatch<BookingDeletedAction>) => {
+  (id: string) =>
+  async (dispatch: Dispatch<BookingDeletedAction>): Promise<void> => {
     try {
       dispatch({ type: DELETE_BOOKING_REQUEST });
 
@@ -186,7 +187,8 @@ export const deleteBooking =
 
 // Clear Errors
 export const clearErrors =
-  () => async (dispatch: Dispatch<ClearErrorAction>) => {
+  () =>
+  async (dispatch: Dispatch<ClearErrorAction>): Promise<void> => {
     dispatch({
       type: CLEAR_ERRORS,
     });

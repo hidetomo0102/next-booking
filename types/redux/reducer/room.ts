@@ -27,7 +27,7 @@ export interface RoomState extends InitialState {
 }
 
 export interface CheckReviewState extends InitialState {
-  reviewAvailable?: boolean | null;
+  isReviewAvailable?: boolean | null;
 }
 
 export interface RoomReviewsState extends InitialState {
@@ -46,12 +46,12 @@ export interface AllRoomsAction {
     | "ADMIN_ROOM_SUCCESS"
     | "ADMIN_ROOM_FAIL"
     | "CLEAR_ERRORS";
-  payload: AllRoomsState;
+  payload?: AllRoomsState;
 }
 
 export interface RoomDetailsAction {
   type: "ROOMS_DETAILS_SUCCESS" | "ROOMS_DETAILS_FAIL" | "CLEAR_ERRORS";
-  payload: Room;
+  payload?: Room | null;
 }
 
 export interface NewReviewAction {
@@ -61,7 +61,7 @@ export interface NewReviewAction {
     | "NEW_REVIEW_RESET"
     | "NEW_REVIEW_FAIL"
     | "CLEAR_ERRORS";
-  payload: NewReviewState;
+  payload?: boolean;
 }
 
 export interface NewRoomAction {
@@ -71,7 +71,7 @@ export interface NewRoomAction {
     | "NEW_ROOM_RESET"
     | "NEW_ROOM_FAIL"
     | "CLEAR_ERRORS";
-  payload: NewRoomState;
+  payload?: NewRoomState;
 }
 
 export interface RoomAction {
@@ -85,7 +85,7 @@ export interface RoomAction {
     | "DELETE_ROOM_RESET"
     | "DELETE_ROOM_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean;
+  payload?: boolean;
 }
 
 export interface CheckReviewAction {
@@ -94,7 +94,7 @@ export interface CheckReviewAction {
     | "REVIEW_AVAILABILITY_SUCCESS"
     | "REVIEW_AVAILABILITY_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean | null;
+  payload?: boolean | null;
 }
 
 export interface RoomReviewsAction {
@@ -103,7 +103,7 @@ export interface RoomReviewsAction {
     | "GET_REVIEWS_SUCCESS"
     | "GET_REVIEWS_FAIL"
     | "CLEAR_ERRORS";
-  payload: RoomReviewsState;
+  payload?: RoomReviewsState;
 }
 
 export interface ReviewAction {
@@ -113,5 +113,5 @@ export interface ReviewAction {
     | "DELETE_REVIEW_RESET"
     | "DELETE_REVIEW_FAIL"
     | "CLEAR_ERRORS";
-  payload: boolean;
+  payload?: boolean;
 }

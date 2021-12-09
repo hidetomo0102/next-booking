@@ -65,15 +65,15 @@ export const allRoomsReducer = (
       };
     case ALL_ROOMS_SUCCESS:
       return {
-        roomsCount: action.payload.roomsCount,
-        resPerPage: action.payload.resPerPage,
-        filteredRoomsCount: action.payload.filteredRoomsCount,
-        rooms: action.payload.rooms,
+        roomsCount: action.payload!.roomsCount,
+        resPerPage: action.payload!.resPerPage,
+        filteredRoomsCount: action.payload!.filteredRoomsCount,
+        rooms: action.payload!.rooms,
       };
     case ADMIN_ROOM_SUCCESS:
       return {
         loading: false,
-        rooms: action.payload.rooms,
+        rooms: action.payload!.rooms,
       };
     case ALL_ROOMS_FAIL:
     case ADMIN_ROOM_FAIL:
@@ -127,7 +127,7 @@ export const newReviewReducer = (
     case NEW_REVIEW_SUCCESS:
       return {
         loading: false,
-        success: action.payload.success,
+        success: action.payload,
       };
     case NEW_REVIEW_RESET:
       return {
@@ -161,8 +161,8 @@ export const newRoomReducer = (
     case NEW_ROOM_SUCCESS:
       return {
         loading: false,
-        success: action.payload.success,
-        room: action.payload.room,
+        success: action.payload!.success,
+        room: action.payload!.room,
       };
     case NEW_ROOM_RESET:
       return {
@@ -232,7 +232,7 @@ export const roomReducer = (
 
 // check review availability
 export const checkReviewReducer = (
-  state: CheckReviewState = { reviewAvailable: null },
+  state: CheckReviewState = { isReviewAvailable: null },
   action: CheckReviewAction
 ): CheckReviewState => {
   switch (action.type) {
@@ -244,7 +244,7 @@ export const checkReviewReducer = (
     case REVIEW_AVAILABILITY_SUCCESS:
       return {
         loading: false,
-        reviewAvailable: action.payload,
+        isReviewAvailable: action.payload,
       };
 
     case REVIEW_AVAILABILITY_FAIL:
@@ -277,7 +277,7 @@ export const roomReviewsReducer = (
     case GET_REVIEWS_SUCCESS:
       return {
         loading: false,
-        reviews: action.payload.reviews,
+        reviews: action.payload!.reviews,
       };
     case GET_REVIEWS_FAIL:
       return {

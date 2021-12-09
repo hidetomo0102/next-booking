@@ -99,7 +99,7 @@ export const updateRoom = catchAsyncError(async (req, res) => {
   });
 
   res.status(200).json({
-    success: true,
+    isUpdated: true,
     room,
   });
 });
@@ -118,7 +118,7 @@ export const deleteRoom = catchAsyncError(async (req, res) => {
   await room.remove();
 
   res.status(200).json({
-    success: true,
+    isDeleted: true,
     message: "Room is deleted",
   });
 });
@@ -225,6 +225,6 @@ export const deleteReview = catchAsyncError(async (req, res) => {
   );
 
   res.status(200).json({
-    success: true,
+    isDeleted: true,
   });
 });

@@ -1,11 +1,6 @@
 import React from "react";
 import { getSession } from "next-auth/client";
-import {
-  GetServerSidePropsContext,
-  GetServerSidePropsResult,
-  NextPage,
-  Redirect,
-} from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 
 import { MyBookings } from "../../components/bookings/MyBookings";
 import { Layout } from "../../components/layouts/Layout";
@@ -35,6 +30,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
     }
 
     await store.dispatch(myBookings(req.headers.cookie, req));
+    return { props: { session } };
   }
 );
 

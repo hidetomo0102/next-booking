@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Loader } from "../layouts/Loader";
 import {
   newReview,
   clearErrors,
