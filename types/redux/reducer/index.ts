@@ -6,3 +6,7 @@ export interface InitialState {
 export interface ClearErrorAction {
   type: "CLEAR_ERRORS";
 }
+
+export interface AllActions {
+  
+}

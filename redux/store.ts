@@ -5,11 +5,14 @@ import {
   CombinedState,
   createStore,
   Middleware,
+  Reducer,
   ReducersMapObject,
   Store,
+  StoreCreator,
   StoreEnhancer,
 } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { RootState } from "../types/redux/store";
 
 import { reducers } from "./reducers/reducers";
 
@@ -25,12 +28,9 @@ const bindMiddleware = (
 };
 
 // FIXME: reducersを変えたら↓のstateなどの型定義やる
-const reducer = (
-  state: any,
-  action: AnyAction
-): ReducersMapObject | CombinedState<any> => {
+const reducer = (state: RootState, action: AnyAction): Reducer => {
   if (action.type === HYDRATE) {
-    const nextState: ReducersMapObject = {
+    const nextState: Reducer = {
       ...state,
       ...action.payload,
     };
@@ -40,7 +40,7 @@ const reducer = (
   }
 };
 
-const initStore = (): Store => {
+const initStore = (): StoreCreator => {
   return createStore(reducer, bindMiddleware([thunkMiddleware]));
 };
 

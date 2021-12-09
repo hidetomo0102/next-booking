@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers, Reducer } from "redux";
 
 import {
   bookedDatesReducer,
@@ -26,7 +26,7 @@ import {
   userDetailsReducer,
 } from "./userReducers";
 
-export const reducers = combineReducers({
+export const reducers: Reducer = combineReducers({
   allRooms: allRoomsReducer,
   newRoom: newRoomReducer,
   roomDetails: roomDetailsReducer,
