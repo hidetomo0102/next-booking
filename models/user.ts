@@ -2,8 +2,9 @@ import { model, models, Schema } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import { createHash, randomBytes } from "crypto";
+import { User } from "../types/model";
 
-const userSchema = new Schema({
+const userSchema: Schema<User> = new Schema({
   name: {
     type: String,
     required: [true, "Please enter your name"],

@@ -5,6 +5,7 @@ export type CustomSession =
   | ({
       user?: {
         role?: string;
+        _id?: string;
       };
     } & Session)
   | null;

@@ -1,4 +1,13 @@
-import { combineReducers, Reducer } from "redux";
+import {
+  ActionFromReducersMapObject,
+  CombinedState,
+  combineReducers,
+  Reducer,
+  StateFromReducersMapObject,
+} from "redux";
+import { Action, Actions } from "../../types/redux/actions";
+import { State } from "../../types/redux/reducer";
+import { RootState } from "../../types/redux/store";
 
 import {
   bookedDatesReducer,
@@ -26,7 +35,7 @@ import {
   userDetailsReducer,
 } from "./userReducers";
 
-export const reducers: Reducer = combineReducers({
+export const reducers: Reducer<State> = combineReducers({
   allRooms: allRoomsReducer,
   newRoom: newRoomReducer,
   roomDetails: roomDetailsReducer,

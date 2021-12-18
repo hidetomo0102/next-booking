@@ -29,7 +29,9 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
       };
     }
 
-    await store.dispatch(myBookings(req.headers.cookie, req));
+    const authCookie = req.headers.cookie!;
+
+    await store.dispatch(myBookings(authCookie, req));
     return { props: { session } };
   }
 );

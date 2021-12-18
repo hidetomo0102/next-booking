@@ -56,7 +56,7 @@ export type User = {
   password: string;
   avatar: Avatar;
   role: string;
-  createdAt: Date;
+  createdAt: Date | number;
   resetPasswordToken?: string;
   resetPasswordExpire?: Date;
 };
